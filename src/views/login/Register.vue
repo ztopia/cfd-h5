@@ -95,7 +95,10 @@
       </ValidationObserver>
       <div class="service-warp">
         <van-checkbox v-model="checked" shape="square" checked-color="#5A59DE">
-          <span class="service-text">已阅读并同意<a href="javascript:;">LiteEx网络服务条款</a></span>
+          <span class="service-text">
+            已阅读并同意
+            <a href="https://liteex.zendesk.com/hc/zh-cn/articles/900000558626" target="_blank">LiteEx网络服务条款</a>
+          </span>
         </van-checkbox>
       </div>
       <div class="register-btn" :class="[canClick ? 'active' : '']" @click="onRegister">
