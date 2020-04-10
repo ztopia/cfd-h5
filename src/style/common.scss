@@ -1,0 +1,110 @@
+// 注册
+.register {
+  min-height: 100%;
+  position: relative;
+  .gee-btn {
+    height: 0;
+    opacity: 0;
+  }
+  .register-box {
+    box-sizing: border-box;
+    position: absolute;
+    top: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 295px;
+    padding: 25px;
+    padding-top: 15px;
+    background-color: #fff;
+    border-radius: 16px;
+  }
+  .code-warp {
+    align-items: flex-start;
+  }
+  .field-warp {
+    margin-top: 14px;
+    .van-cell {
+      padding: 0;
+      .van-field__body {
+        padding: 8px 12px;
+        border-radius: 4px;
+        background-color: #F6F6FF;
+      }
+      .van-field__error-message {
+        line-height: 16px;
+      }
+    }
+    &.code-picker {
+      width: 80px;
+    }
+    .get-code {
+      line-height: 20px;
+      font-size: 14px;
+      color: #5A59DE;
+    }
+  }
+  .service-warp {
+    margin-top: 14px;
+    .service-text {
+      line-height: 14px;
+      font-size: 12px;
+      color: #5A59DE;
+      a {
+        text-decoration: underline;
+        color: #5A59DE;
+      }
+    }
+    .van-checkbox__label {
+      line-height: 12px;
+    }
+  }
+  .register-btn {
+    height: 40px;
+    margin-top: 14px;
+    background-color: #5A59DE;
+    border-radius: 20px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    opacity: 0.6;
+    &.active {
+      opacity: 1;
+      &:active {
+        opacity: 0.4;
+      }
+    }
+  }
+  .success-warp {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    margin-top: 60px;
+  }
+  .success-text {
+    margin-top: 10px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 28px;
+    color: #12141A;
+  }
+  .welcome-text {
+    line-height: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+  }
+  .enter-text {
+    margin-top: 40px;
+    line-height: 16px;
+    text-align: center;
+    font-size: 12px;
+    color: #979797;
+  }
+  .enter-warp {
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+    margin-top: 8px;
+  }
+}
