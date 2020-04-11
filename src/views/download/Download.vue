@@ -2,7 +2,12 @@
   <div class="main">
     <img src="../../assets/download/bg.png" alt />
     <div class="footer">
-      <a class="btn app-store" href="javascript:;" v-show="showAppStore">
+      <!-- <a 
+        class="btn app-store"
+        download="LiteEx"
+        href="https://testflight.apple.com/join/Q2XFZWcH"
+        v-if="showAppStore"
+      >
         <i class="apple-icon">
           <img src="../../assets/download/apple.png" alt />
         </i>
@@ -10,11 +15,20 @@
           <div class="store-text">App Store</div>
           <div class="apple-id">非大陆Apple ID</div>
         </article>
+      </a> -->
+      <a
+        class="btn local"
+        download="LiteEx"
+        href="https://testflight.apple.com/join/Q2XFZWcH"
+        v-if="showAppStore"
+      >
+        <span class="local-text">本地下载</span>
       </a>
       <a
         class="btn local"
         download="LiteEx"
         href="https://liteex-app.oss-cn-heyuan.aliyuncs.com/liteex.apk"
+        v-else
       >
         <span class="local-text">本地下载</span>
       </a>
@@ -38,7 +52,7 @@ export default {
     if (ios || iPad || iPhone) {
       this.showAppStore = true
     } else {
-      this.showAppStore = true
+      this.showAppStore = false
     }
   },
   methods: {}
