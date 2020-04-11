@@ -44,15 +44,18 @@
     }
   }
   .service-warp {
+    justify-content: start;
     margin-top: 14px;
     .service-text {
       line-height: 14px;
       font-size: 12px;
       color: #5A59DE;
-      a {
-        text-decoration: underline;
-        color: #5A59DE;
-      }
+    }
+    .service-link {
+      height: 16px;
+      font-size: 12px;
+      text-decoration: underline;
+      color: #5A59DE;
     }
     .van-checkbox__label {
       line-height: 12px;

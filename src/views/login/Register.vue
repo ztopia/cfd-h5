@@ -93,13 +93,13 @@
           </ValidationProvider>
         </div>
       </ValidationObserver>
-      <div class="service-warp">
+      <div class="service-warp flex-row">
         <van-checkbox v-model="checked" shape="square" checked-color="#5A59DE">
           <span class="service-text">
             已阅读并同意
-            <a href="https://liteex.zendesk.com/hc/zh-cn/articles/900000558626" target="_blank">LiteEx网络服务条款</a>
           </span>
         </van-checkbox>
+        <a class="service-link" href="https://liteex.zendesk.com/hc/zh-cn/articles/900000558626" target="_blank">LiteEx网络服务条款</a>
       </div>
       <div class="register-btn" :class="[canClick ? 'active' : '']" @click="onRegister">
         {{$t('Register')}}
