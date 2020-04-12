@@ -1,7 +1,6 @@
 <template>
   <div class="register">
-    <img src="../../assets/login/register_top.png" alt="bg">
-    <img src="../../assets/login/register_bottom.png" alt="bg">
+    <img src="https://liteex-pro.oss-cn-hongkong.aliyuncs.com/picture/register_bg.png" alt="bg">
     <div class="register-box" v-if="!registerSuccess">
       <van-tabs
         v-model="businessType"

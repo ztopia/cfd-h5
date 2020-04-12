@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <img src="../../assets/download/bg.png" alt />
+    <img src="https://liteex-pro.oss-cn-hongkong.aliyuncs.com/picture/download_bg.png" alt />
     <div class="footer">
       <!-- <a 
         class="btn app-store"
