@@ -1,5 +1,11 @@
 <template>
   <div class="register">
+    <div class="header flex-row">
+      <div class="logo">
+        <img src="../../assets/login/logo.png" alt="">
+      </div>
+      <div class="download" @click="$router.push('/download')">下载APP</div>
+    </div>
     <img src="https://liteex-pro.oss-cn-hongkong.aliyuncs.com/picture/register_bg.png" alt="bg">
     <div class="register-box" v-if="!registerSuccess">
       <van-tabs
