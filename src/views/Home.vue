@@ -1,6 +1,6 @@
 <template>
   <div>
-    home
+    
   </div>
 </template>
 
@@ -8,6 +8,9 @@
 export default {
   data() {
     return {}
+  },
+  created() {
+    this.$router.push('/register')
   },
   methods: {}
 };
