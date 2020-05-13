@@ -33,6 +33,7 @@
         <span class="local-text">本地下载</span>
       </a>
     </div>
+    <div class="wechatNotice" :class="{'hide': userAgent.match(/MicroMessenger/i) != 'micromessenger'}"></div>
   </div>
 </template>
 
@@ -40,7 +41,8 @@
 export default {
   data() {
     return {
-      showAppStore: false
+      showAppStore: false,
+      userAgent: navigator.userAgent.toLowerCase()
     };
   },
   mounted() {
@@ -120,5 +122,22 @@ export default {
   line-height: 48px;
   font-weight: 500;
   font-size: 16px;
+}
+.wechatNotice{
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 150px;
+  height: 64px;
+  z-index: 2500;
+  background: image-set(
+    url('../../assets/download/wechatNotice.png') 1x,
+    url('../../assets/download/wechatNotice@2x.png') 2x
+  );
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.hide {
+  display: none;
 }
 </style>
