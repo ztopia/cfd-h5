@@ -14,6 +14,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "register" */ "../views/login/Register.vue")
   },
   {
+    path: "/klinechart",
+    name: "kline",
+    component: () => import(/* webpackChunkName: "register" */ "../views/kline/Index.vue")
+  },
+  {
     path: "/download",
     name: "download",
     component: () => import(/* webpackChunkName: "download" */ "../views/download/Download.vue")
