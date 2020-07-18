@@ -43,7 +43,7 @@ export default {
     getKlineData() {
       axios
         .get(
-          "/" +
+          "/api/index/v3/instruments/" +
             this.id +
             "/candles?granularity=" +
             this.granularity +
