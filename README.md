@@ -22,3 +22,10 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+    var precision = this.$route.query.precision;
+    var sub = this.$route.query.sub;
+    var main = this.$route.query.main;
+    this.granularity = this.$route.query.range;
+    this.id = this.$route.query.id;

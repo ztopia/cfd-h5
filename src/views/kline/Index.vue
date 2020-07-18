@@ -98,9 +98,9 @@ export default {
   mounted: function() {
     window.onresize = () => this.kLineChart.resize();
     var precision = this.$route.query.precision;
-    console.log(precision)
     var sub = this.$route.query.sub;
     var main = this.$route.query.main;
+    var isReal = this.$route.query.real;
     this.granularity = this.$route.query.range;
     if (this.$route.query.id) this.id = this.$route.query.id;
     this.getKlineData();
@@ -108,6 +108,7 @@ export default {
     const kLineChart = init("basic-k-line");
     kLineChart.setOffsetRightSpace(80);
     kLineChart.createTechnicalIndicator(sub);
+    isReal === "true" && kLineChart.setCandleStickChartType("real_time");
     kLineChart.setCandleStickTechnicalIndicatorType(main);
     kLineChart.setPrecision(Number(precision), Number(precision));
     this.kLineChart = kLineChart;
@@ -118,7 +119,6 @@ export default {
           display: true,
           size: 1,
           color: "#393939",
-          // 'solid'|'dash'
           style: "dash",
           dashValue: [4, 4]
         },
@@ -126,7 +126,6 @@ export default {
           display: true,
           size: 1,
           color: "#393939",
-          // 'solid'|'dash'
           style: "dash",
           dashValue: [4, 4]
         }
@@ -134,8 +133,8 @@ export default {
       candleStick: {
         bar: {
           style: "solid",
-          upColor: "rgba(7,171,145,1)",
-          downColor: "rgba(209,72,105,1)",
+          upColor: "#14af81",
+          downColor: "#ec516d",
           noChangeColor: "#666666"
         }
       },
@@ -151,57 +150,63 @@ export default {
           size: 1
         }
       },
+      technicalIndicator: {
+        bar: {
+          upColor: "#14af81",
+          downColor: "#ec516d",
+          noChangeColor: "#666666"
+        }
+      },
+      separator: {
+        size: 1,
+        color: "rgba(255, 255, 255, 0.1)",
+        fill: true
+      },
       xAxis: {
         axisLine: {
           color: "rgba(255, 255, 255, 0.1)"
         }
       },
       yAxis: {
+        display: true,
+        maxWidth: 80,
+        minWidth: 60,
+        // 'left' | 'right'
+        position: "right",
         axisLine: {
           color: "rgba(255, 255, 255, 0.1)"
         },
         tickText: {
-          position: "inside"
+          position: "inside",
+          margin: 5
+        },
+        tickLine: {
+          display: true,
+          size: 1,
+          length: 3,
+          color: "#888888"
         }
       },
       floatLayer: {
-        displayRule: "follow_cross",
+        displayRule: "none",
         prompt: {
           candleStick: {
             showType: "rect",
-            labels: ["", "开", "收", "高", "低", ""],
-            text: {
-              size: 12,
-              color: "#D9D9D9",
-              family: "Arial",
-              marginLeft: 4,
-              marginTop: 6,
-              marginRight: 2,
-              marginBottom: 0
+            labels: ["时间", "开", "收", "高", "低"],
+            rect: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+              left: 8,
+              top: 8,
+              right: 44,
+              borderRadius: 4,
+              borderSize: 1,
+              borderColor: "#3f4254",
+              fillColor: "rgba(17, 17, 17, .3)"
             }
           }
-        },
-        rect: {
-          paddingLeft: 0,
-          paddingRight: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          left: 2,
-          top: 2,
-          right: 2,
-          borderRadius: 4,
-          borderSize: 1,
-          borderColor: "#3f4254",
-          fillColor: "rgba(17, 17, 17, .3)"
-        },
-        text: {
-          size: 10,
-          color: "#D9D9D9",
-          family: "Arial",
-          marginLeft: 0,
-          marginTop: 0,
-          marginRight: 0,
-          marginBottom: 0
         }
       }
     });
