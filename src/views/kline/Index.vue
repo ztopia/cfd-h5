@@ -1,5 +1,8 @@
 <template>
-  <div id="basic-k-line" class="k-line-chart" />
+  <div class="klinechart">
+    <div id="basic-k-line" class="k-line-chart" />
+    <img class="logo" src="../../assets/logo.png" alt />
+  </div>
 </template>
 
 <script>
@@ -218,7 +221,7 @@ export default {
 </script>
 
 <style>
-body {
+body html {
   margin: 0;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -229,6 +232,18 @@ body {
 div,
 p {
   box-sizing: border-box;
+}
+.klinechart {
+  position: relative;
+
+}
+
+.logo{
+  position: absolute;
+  bottom: 140px;
+  left: 20px;
+  z-index: 100;
+  width: 90px;
 }
 
 .k-line-chart {
