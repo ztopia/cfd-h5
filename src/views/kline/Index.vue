@@ -221,12 +221,12 @@ export default {
 </script>
 
 <style>
-body html {
+body {
   margin: 0;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #12141b;
+  background-color: #12141b !important;
 }
 
 div,
