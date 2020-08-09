@@ -191,8 +191,8 @@ export default {
         }
       },
       floatLayer: {
-        displayRule: "none",
         prompt: {
+          displayRule: "follow_cross",
           candleStick: {
             showType: "rect",
             labels: ["时间", "开", "收", "高", "低"],
