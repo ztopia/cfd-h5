@@ -24,6 +24,8 @@
       >
         <span class="local-text">本地下载</span>
       </a>
+      <div style="font-size: 12px;margin-top: 10px;" v-if="showAppStore">IOS/苹果用户下载前先查看<a href="https://liteex.zendesk.com/hc/zh-cn/articles/900002083446">《下载指南》</a></div>
+
       <a
         class="btn local"
         download="LiteEx"
@@ -73,10 +75,12 @@ export default {
   left: 0;
   bottom: 0;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  // align-items: center;
+  justify-content: center;
   box-sizing: border-box;
   width: 100%;
-  height: 88px;
+  height: 98px;
   padding: 20px 10px;
   background-color: #fff;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
