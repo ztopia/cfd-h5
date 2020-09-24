@@ -1,6 +1,10 @@
 <template>
   <div class="main">
-    <img src="https://liteex-pro.oss-cn-hongkong.aliyuncs.com/picture/download_bg.png" alt />
+    <img src="../../assets/download/download_new_bg.png" class="download-bg" />
+    <!-- <img
+      src="https://liteex-pro.oss-cn-hongkong.aliyuncs.com/picture/download_bg.png"
+      alt
+    /> -->
     <div class="footer">
       <!-- <a 
         class="btn app-store"
@@ -16,15 +20,35 @@
           <div class="apple-id">非大陆Apple ID</div>
         </article>
       </a> -->
-      <a
-        class="btn local"
-        download="LiteEx"
-        href="https://testflight.apple.com/join/Q2XFZWcH"
-        v-if="showAppStore"
-      >
-        <span class="local-text">本地下载</span>
-      </a>
-      <div style="font-size: 12px;margin-top: 10px;" v-if="showAppStore">IOS/苹果用户下载前先查看<a href="https://liteex.zendesk.com/hc/zh-cn/articles/900002083446">《下载指南》</a></div>
+      <div class="btn-panel">
+        <router-link
+          to="/download-ios"
+          class="btn local apple-stable"
+          download="LiteEx"
+          href="https://testflight.apple.com/join/Q2XFZWcH"
+          v-if="showAppStore"
+        >
+          <img src="../../assets/download/apple_logo.png" alt="" />
+          <div class="right">
+            <span class="right-top">公测不掉签版</span>
+            <span class="right-bottom">testFight版</span>
+          </div>
+        </router-link>
+        <a
+          class="btn local"
+          download="LiteEx"
+          href="https://testflight.apple.com/join/Q2XFZWcH"
+          v-if="showAppStore"
+        >
+          <span class="local-text">本地下载</span>
+        </a>
+      </div>
+      <div style="font-size: 12px;margin-top: 10px;" v-if="showAppStore">
+        IOS/苹果用户下载前先查看<a
+          href="https://liteex.zendesk.com/hc/zh-cn/articles/900002083446"
+          >《下载指南》</a
+        >
+      </div>
 
       <a
         class="btn local"
@@ -35,7 +59,10 @@
         <span class="local-text">本地下载</span>
       </a>
     </div>
-    <div class="wechatNotice" :class="{'hide': userAgent.match(/MicroMessenger/i) != 'micromessenger'}"></div>
+    <div
+      class="wechatNotice"
+      :class="{ hide: userAgent.match(/MicroMessenger/i) != 'micromessenger' }"
+    ></div>
   </div>
 </template>
 
@@ -44,23 +71,23 @@ export default {
   data() {
     return {
       showAppStore: false,
-      userAgent: navigator.userAgent.toLowerCase()
-    };
+      userAgent: navigator.userAgent.toLowerCase(),
+    }
   },
   mounted() {
-    let u = navigator.userAgent;
-    let app = navigator.appVersion;
-    let ios = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-    let iPad = u.indexOf('iPad') > -1;
-    let iPhone = u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1;
+    let u = navigator.userAgent
+    // let app = navigator.appVersion
+    let ios = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
+    let iPad = u.indexOf('iPad') > -1
+    let iPhone = u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1
     if (ios || iPad || iPhone) {
       this.showAppStore = true
     } else {
       this.showAppStore = false
     }
   },
-  methods: {}
-};
+  methods: {},
+}
 </script>
 
 <style lang="scss" scoped>
@@ -69,6 +96,10 @@ export default {
   margin: 0 auto;
   padding-bottom: 80px;
   text-align: center;
+}
+.download-bg {
+  width: 100%;
+  display: block;
 }
 .footer {
   position: fixed;
@@ -96,6 +127,33 @@ export default {
   justify-content: center;
   align-items: center;
 }
+.btn-panel {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  .apple-stable {
+    background-color: #000;
+    img {
+      display: block;
+      width: 24px;
+      margin-right: 5px;
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      span {
+        color: #fff;
+        font-size: 14px;
+        &:nth-of-type(2) {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
+
 .app-store {
   background-color: #222;
 }
@@ -127,7 +185,7 @@ export default {
   font-weight: 500;
   font-size: 16px;
 }
-.wechatNotice{
+.wechatNotice {
   position: fixed;
   right: 0;
   top: 0;
