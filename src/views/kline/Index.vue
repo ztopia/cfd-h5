@@ -28,6 +28,7 @@ export default {
       //     ? 'wss://real.okex.com:8443/ws/v3'
       //     : 'wss://real.okex.me:8443/ws/v3',
       id: 'BTC-USDT',
+      restfulReady: false,
     }
   },
   watch: {
@@ -69,6 +70,7 @@ export default {
             close: Number(el[4]),
             volume: Number(el[5]),
           }))
+          this.restfulReady = true
           this.klineData = arr
         })
     },
@@ -95,8 +97,10 @@ export default {
           try {
             var res = JSON.parse(pako.inflateRaw(data.data, { to: 'string' }))
             console.log(res)
-            if (res.table && res.data[0].candle) {
-              this.updateDate = res.data[0].candle
+            if (this.restfulReady) {
+              if (res.table && res.data[0].candle) {
+                this.updateDate = res.data[0].candle
+              }
             }
           } catch (err) {
             console.log(err)
