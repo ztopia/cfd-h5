@@ -21,8 +21,7 @@
         </article>
       </a> -->
       <div class="btn-panel">
-        <router-link
-          to="/download-ios"
+        <a
           class="btn local apple-stable"
           download="LiteEx"
           href="https://testflight.apple.com/join/Q2XFZWcH"
@@ -33,15 +32,15 @@
             <span class="right-top">公测不掉签版</span>
             <span class="right-bottom">testFight版</span>
           </div>
-        </router-link>
-        <a
+        </a>
+        <router-link
+          to="/download-ios"
           class="btn local"
           download="LiteEx"
-          href="https://testflight.apple.com/join/Q2XFZWcH"
           v-if="showAppStore"
         >
           <span class="local-text">本地下载</span>
-        </a>
+        </router-link>
       </div>
       <div style="font-size: 12px;margin-top: 10px;" v-if="showAppStore">
         IOS/苹果用户下载前先查看<a
