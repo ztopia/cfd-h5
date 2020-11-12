@@ -85,9 +85,14 @@ export default {
         op: 'subscribe',
         args: [`index/candle${this.granularity}s:${this.id}`],
       }
+      let subTicker = {
+        op: 'subscribe',
+        args: [`index/ticker:${this.id}`],
+      }
 
       this.Socket.onopen = () => {
         this.Socket.send(JSON.stringify(sub))
+        this.Socket.send(JSON.stringify(subTicker))
       }
 
       this.Socket.onmessage = (data) => {
@@ -95,12 +100,26 @@ export default {
           console.log(data.data)
         } else {
           try {
-            var res = JSON.parse(pako.inflateRaw(data.data, { to: 'string' }))
+            let res = JSON.parse(pako.inflateRaw(data.data, { to: 'string' }))
             console.log(res)
-            if (this.restfulReady) {
-              if (res.table && res.data[0].candle) {
-                this.updateDate = res.data[0].candle
-              }
+
+            switch (res.table) {
+              case 'index/ticker':
+                if (this.updateDate) {
+                  this.updateDate[4] = res.data[0].last
+                  // console.log(this.updateDate[4], 'ztopia')
+                }
+                break
+              case `index/candle${this.granularity}s`:
+                if (this.restfulReady) {
+                  if (res.data[0].candle) {
+                    this.updateDate = res.data[0].candle
+                    // console.log(this.updateDate[4], 'ztopia candle')
+                  }
+                }
+                break
+              default:
+                return
             }
           } catch (err) {
             console.log(err)
