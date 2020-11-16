@@ -33,24 +33,43 @@ export default {
   },
   watch: {
     klineData() {
-      console.log(this.klineData)
+      // console.log(this.klineData)
       this.kLineChart && this.kLineChart.applyNewData(this.klineData)
     },
     updateDate() {
-      console.log(this.updateDate)
+      // console.log(this.updateDate)
       var el = this.updateDate
       let newData = {
         timestamp: Date.parse(el[0]),
-        open: Number(el[1]),
-        high: Number(el[2]),
-        low: Number(el[3]),
-        close: Number(el[4]),
+        open: Number(this.formatByPriceTick(el[1])),
+        high: Number(this.formatByPriceTick(el[2])),
+        low: Number(this.formatByPriceTick(el[3])),
+        close: Number(this.formatByPriceTick(el[4])),
         volume: Number(el[5]),
       }
       this.kLineChart && this.kLineChart.updateData(newData)
     },
   },
   methods: {
+    formatByPriceTick(num) {
+      if (num === '') return 0
+      if (!Number(num)) return num
+
+      let priceTick = this.$route.query.precision
+      let floatLen = Number(priceTick) || 1
+      let numT = num.toString()
+      let num0 = numT.indexOf('.') > -1 ? numT.split('.')[0] : numT
+      let num1 = ''
+      for (let i = 0; i < floatLen; i++) {
+        if (numT.indexOf('.') > -1) {
+          num1 += numT.split('.')[1][i] ? numT.split('.')[1][i] : '0'
+        } else {
+          num1 += '0'
+        }
+      }
+
+      return floatLen === 0 ? num0 : `${num0}.${num1}`
+    },
     getKlineData() {
       axios
         .get(
@@ -61,7 +80,7 @@ export default {
             '&t=1594261796066&size=300'
         )
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           let arr = res.data.data.map((el) => ({
             timestamp: Date.parse(el[0]),
             open: Number(el[1]),
@@ -97,16 +116,16 @@ export default {
 
       this.Socket.onmessage = (data) => {
         if (data.data instanceof String) {
-          console.log(data.data)
+          // console.log(data.data)
         } else {
           try {
             let res = JSON.parse(pako.inflateRaw(data.data, { to: 'string' }))
-            console.log(res)
+            // console.log(res)
 
             switch (res.table) {
               case 'index/ticker':
                 if (this.updateDate) {
-                  this.updateDate[4] = res.data[0].last
+                  this.updateDate[4] = this.formatByPriceTick(res.data[0].last)
                   // console.log(this.updateDate[4], 'ztopia')
                 }
                 break
