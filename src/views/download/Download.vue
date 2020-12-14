@@ -33,14 +33,14 @@
             <span class="right-bottom">testFight版</span>
           </div>
         </a>
-        <router-link
+        <!-- <router-link
           to="/download-ios"
           class="btn local"
           download="LiteEx"
           v-if="showAppStore"
         >
           <span class="local-text">本地下载</span>
-        </router-link>
+        </router-link> -->
       </div>
       <div style="font-size: 12px;margin-top: 10px;" v-if="showAppStore">
         IOS/苹果用户下载前先查看<a
